@@ -6,6 +6,44 @@
     <title>Sweet India</title>
     <meta name="description" content="Sweet India - Best Sweets and Desserts in India">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf0;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #a52a2a;
+        }
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #a52a2a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #menu {
+            margin-top: 40px;
+            background: #fff8f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        p {
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -15,10 +53,15 @@
         
         <div id="menu">
             <h2>📜 Menu List</h2>
-            <p> JALDI HI MENU KO UPDATE KIYA JAYEGA 
-                  PLEASE WAIT</p>
+            <p>JALDI HI MENU KO UPDATE KIYA JAYEGA<br>PLEASE WAIT</p>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        function showMenu() {
+            const menu = document.getElementById("menu");
+            menu.scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
 </body>
 </html>

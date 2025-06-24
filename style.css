@@ -31,14 +31,14 @@ p {
     border: none;
 }
 .btn:hover {
-    background-color: #FFD700;
+    background-color: #ff9966;
     color: white;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 #menu {
     display: none;
     margin-top: 20px;
-    background: YELLOW;
+    background: nevy blue;
     color: black;
     padding: 20px;
     border-radius: 10px;

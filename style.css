@@ -6,17 +6,21 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .container {
     margin-top: 10%;
 }
+
 h1 {
     font-size: 3rem;
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
+
 p {
     font-size: 1.5rem;
 }
+
 .btn {
     display: inline-block;
     background-color: white;
@@ -30,17 +34,27 @@ p {
     transition: 0.3s;
     border: none;
 }
+
 .btn:hover {
     background-color: #ff9966;
     color: white;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
+
+/* Menu animation style */
 #menu {
-    display: none;
-    margin-top: 20px;
-    background: nevy blue;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-in-out, padding 0.3s ease;
+    background-color: white;
     color: black;
-    padding: 20px;
+    padding: 0 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* When menu is open */
+#menu.open {
+    max-height: 5000px; /* adjust as needed */
+    padding: 20px;
 }

@@ -29,12 +29,12 @@ h1 {
 .btn:hover {
   background-color: #ff6a00;
   color: white;
-  transform: scale(1.1);
+  transform: scale(1.5);
 }
 
 #menu {
   display: none;
-  background: orange;
+  background: pink;
   color: #333;
   padding: 30px;
   border-radius: 20px;

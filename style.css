@@ -23,8 +23,8 @@ h1 {
   color: #ff6a00;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.4s ease;
-  animation: pulse 2s infinite;
+  transition: all 1s ease;
+  animation: pulse 4s infinite;
 }
 .btn:hover {
   background-color: #ff6a00;

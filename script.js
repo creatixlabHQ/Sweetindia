@@ -1,15 +1,28 @@
-function showMenu() {
-  const menu = document.getElementById("menu");
+function showForm(type) {
+  document.getElementById("authForm").style.display = "flex";
+  document.getElementById("formTitle").innerText = type === 'login' ? "Login" : "Register";
+  document.getElementById("switchText").innerText = type === 'login'
+    ? "Don't have an account? Register"
+    : "Already have an account? Login";
+  document.getElementById("switchText").setAttribute("data-form", type);
+}
 
-  if (menu.style.display === "none" || menu.style.display === "") {
-    menu.style.display = "block";
-    menu.classList.remove("hide");
-    menu.classList.add("show");
+function hideForm() {
+  document.getElementById("authForm").style.display = "none";
+}
+
+function toggleForm() {
+  const form = document.getElementById("switchText").getAttribute("data-form");
+  showForm(form === "login" ? "register" : "login");
+}
+
+function submitForm() {
+  const username = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+  if (username && pass) {
+    alert(`Welcome ${username}!`);
+    hideForm();
   } else {
-    menu.classList.remove("show");
-    menu.classList.add("hide");
-    setTimeout(() => {
-      menu.style.display = "none";
-    }, 800); // Match hide animation duration
+    alert("Please fill out both fields.");
   }
 }

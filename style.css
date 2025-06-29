@@ -1,57 +1,12 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ff6a00, #ee0979);
-  color: white;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20vh);
+  visibility: hidden;
+  transition: opacity 0.6s ease-out, transform 1.2s ease-out;
 }
 
-.container {
-  margin-top: 10%;
-  animation: fadeIn 2s ease-in-out;
-}
-
-h1 {
-  font-size: 3rem;
-  animation: slideInDown 3s ease-out;
-}
-
-.btn {
-  padding: 15px 35px;
-  background: white;
-  color: #ff6a00;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 1s ease;
-  animation: pulse 4s infinite;
-}
-.btn:hover {
-  background-color: #ff6a00;
-  color: white;
-  transform: scale(1.5);
-}
-
-#menu {
-  display: none;
-  background: white;
-  color: #333;
-  padding: 30px;
-  border-radius: 20px;
-  animation: fadeInUp 1s forwards;
-}
-
-/* Animations */
-@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-@keyframes slideInDown {
-  from { transform: translateY(-50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-@keyframes fadeInUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
 }

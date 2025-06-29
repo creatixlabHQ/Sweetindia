@@ -1,7 +1,15 @@
-const sections = document.querySelectorAll('.fade-in-section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('is-visible');
-  });
-});
-sections.forEach(s => observer.observe(s));
+function showMenu() {
+  const menu = document.getElementById("menu");
+
+  if (menu.style.display === "none" || menu.style.display === "") {
+    menu.style.display = "block";
+    menu.classList.remove("hide");
+    menu.classList.add("show");
+  } else {
+    menu.classList.remove("show");
+    menu.classList.add("hide");
+    setTimeout(() => {
+      menu.style.display = "none";
+    }, 800); // Match hide animation duration
+  }
+}

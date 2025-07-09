@@ -50,6 +50,20 @@ h1 {
   transform-origin: top;
 }
 
+/* ===== Image Styling Start ===== */
+.hero-image {
+  width: 300px;
+  border-radius: 20px;
+  margin-top: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1.5s ease-in-out;
+  transition: transform 0.3s ease;
+}
+.hero-image:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+/* ===== Image Styling End ===== */
+
 /* 🎇 Animations */
 @keyframes fadeIn {
   from {opacity: 0;}

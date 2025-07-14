@@ -2,315 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sweet India</title>
-  <meta name="description" content="Sweet India - Best restaurant in Basti"/>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet India | Home</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to Sweet India Family Restaurant</h1>
-    <p>Your favorite food 😋, delivered fresh!</p>
-    <button class="btn" onclick="showMenu()">Order Now</button>
+  <header>
+    <nav>
+      <div class="logo">🍽️ Sweet India</div>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- 👇 Image added here -->
-    <div class="image-container">
-      <img src="best-8.png" alt="Restaurant Image" class="hero-image">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Sweet India Family Restaurant</h1>
+      <p>Your favorite food, delivered fresh & hot 🍲</p>
+      <a href="menu.html" class="btn">Explore Menu</a>
     </div>
+    <img src="images/best-8.png" alt="Restaurant Banner" class="hero-img" />
+  </section>
 
-    <div id="menu">
-      <h2>📜 Menu List</h2>
-
-      <!-- Dosa -->
-      <h3>Dosa</h3>
-
-      <strong>Plain & Masala:</strong>
-      <ul>
-        <li>Plain Dosa - ₹149</li>
-        <li>Masala Dosa - ₹159</li>
-        <li>Special Dosa - ₹179</li>
-        <li>Paneer Dosa - ₹199</li>
-      </ul>
-
-      <strong>Onion:</strong>
-      <ul>
-        <li>Onion Dosa - ₹149</li>
-        <li>Onion Paper Dosa - ₹129</li>
-        <li>Onion Masala Dosa - ₹159</li>
-        <li>Onion Special Dosa - ₹179</li>
-        <li>Onion Paneer Dosa - ₹199</li>
-      </ul>
-
-      <strong>Rawa:</strong>
-      <ul>
-        <li>Rava Paper Dosa - ₹149</li>
-        <li>Rava Masala Dosa - ₹169</li>
-        <li>Rava Special Dosa - ₹179</li>
-        <li>Rava Paneer Dosa - ₹199</li>
-      </ul>
-
-      <strong>Rawa + Onion:</strong>
-      <ul>
-        <li>Rava Onion Masala Dosa - ₹179</li>
-        <li>Rava Onion Paneer Dosa - ₹199</li>
-      </ul>
-
-      <strong>Schezwan:</strong>
-      <ul>
-        <li>Schezwan Paper Dosa - ₹179</li>
-        <li>Schezwan Masala Dosa - ₹179</li>
-        <li>Schezwan Special Dosa - ₹199</li>
-        <li>Schezwan Paneer Dosa - ₹199</li>
-      </ul>
-
-      <!-- Pav Bhaji -->
-      <h3>Pav Bhaji</h3>
-      <ul>
-        <li>Pav Bhaji - ₹150</li>
-        <li>Extra Pav - ₹50</li>
-      </ul>
-
-      <!-- Burger -->
-      <h3>BERGER 🍔</h3>
-      <ul>
-        <li>Veg Burger - ₹99</li>
-        <li>Paneer Burger - ₹119</li>
-        <li>Cheese Burger - ₹149</li>
-      </ul>
-
-      <!-- Veg Charming -->
-      <h3>Veg Charming</h3>
-      <ul>
-        <li>Veg Charming - ₹125</li>
-        <li>Paneer Charming - ₹165</li>
-        <li>Chilli Garlic Chaumin - ₹155</li>
-        <li>Mushroom Chaumin - ₹180</li>
-        <li>Singapuri Chowmein - ₹120</li>
-      </ul>
-
-      <!-- Hakka Noodles -->
-      <h3>Hakka Noodles</h3>
-      <ul>
-        <li>Veg Hakka Noodles - ₹155</li>
-        <li>Paneer Hakka Noodles - ₹195</li>
-      </ul>
-
-      <!-- Fried Rice -->
-      <h3>Fried Rice</h3>
-      <ul>
-        <li>Jeera Rice - ₹125</li>
-        <li>Veg Fried Rice - ₹145</li>
-        <li>Paneer Fried Rice - ₹195</li>
-        <li>Mushroom Fried Rice - ₹225</li>
-        <li>Schezwan Fried Rice - ₹235</li>
-        <li>Garlic Fried Rice - ₹230</li>
-        <li>Veg Triple Fried Rice - ₹265</li>
-      </ul>
-
-      <!-- Chilli -->
-      <h3>Chilli</h3>
-      <ul>
-        <li>Paneer Chilli Gravy - ₹225</li>
-        <li>Paneer Chilli Dry - ₹225</li>
-        <li>Mushroom Chilli - ₹235</li>
-        <li>Honey Potato Chilli - ₹165</li>
-        <li>Paneer 65 - ₹195</li>
-        <li>Potato Chilli - ₹125</li>
-        <li>Baby Corn Chilli - ₹205</li>
-      </ul>
-
-      <!-- Pizza -->
-      <h3>Pizza 🍪</h3>
-      <ul>
-        <li>Mix Veg Pizza - ₹255</li>
-        <li>Peri Peri Pizza - ₹225</li>
-        <li>Paneer Pizza - ₹275</li>
-        <li>Mushroom Pizza - ₹285</li>
-        <li>Onion Capsicum Pizza - ₹260</li>
-        <li>Cheese Pizza - ₹300</li>
-      </ul>
-
-      <!-- Chhola Bhatura -->
-      <h3>Chhola Bhatura</h3>
-      <ul>
-        <li>Chhola Bhatura - ₹150</li>
-        <li>Extra Bhatura - ₹50</li>
-      </ul>
-
-      <!-- Finger Chips -->
-      <h3>Finger Chips</h3>
-      <ul>
-        <li>Finger Chips - ₹125</li>
-        <li>Peri Peri Chips - ₹165</li>
-        <li>Maggi Masala - ₹195</li>
-      </ul>
-
-      <!-- Veg Biryani -->
-      <h3>Veg Biryani</h3>
-      <ul>
-        <li>Veg Biryani - ₹230</li>
-      </ul>
-
-      <!-- Momos -->
-      <h3>Momos</h3>
-      <ul>
-        <li>Veg Momos - ₹100</li>
-      </ul>
-
-      <!-- Pakoda -->
-      <h3>Pakoda</h3>
-      <ul>
-        <li>Veg Pakoda - ₹160</li>
-        <li>Paneer Pakoda - ₹160</li>
-      </ul>
-
-      <!-- Idli -->
-      <h3>Idli</h3>
-      <ul>
-        <li>Plain Idli - ₹120</li>
-        <li>Masala Idli - ₹140</li>
-        <li>Fry Idli - ₹160</li>
-      </ul>
-
-      <!-- Sambhar Vada & Cutlet -->
-      <h3>Sambhar Vada & Cutlet</h3>
-      <ul>
-        <li>Sambhar Vada - ₹95</li>
-        <li>Cutlet - ₹100</li>
-        <li>Veg Cutlet - ₹150</li>
-        <li>Paneer Cutlet - ₹150</li>
-      </ul>
-
-      <!-- Chaat -->
-      <h3>Chaat</h3>
-      <ul>
-        <li>Chatpati Chaat - ₹60</li>
-      </ul>
-
-      <!-- Uttapam -->
-      <h3>Uttapam</h3>
-      <ul>
-        <li>Onion Uttapam - ₹120</li>
-        <li>Tomato Uttapam - ₹120</li>
-        <li>Paneer Uttapam - ₹180</li>
-        <li>Mix Veg Uttapam - ₹180</li>
-      </ul>
-
-      <!-- Pasta -->
-      <h3>Pasta 🍝</h3>
-      <ul>
-        <li>White Sauce Pasta - ₹195</li>
-        <li>Red Sauce Pasta - ₹195</li>
-      </ul>
-
-      <!-- Dahi Bada & Kulfi -->
-      <h3>Dahi Bada & Kulfi</h3>
-      <ul>
-        <li>Dahi Vada - ₹85</li>
-        <li>Special Kulfi Faluda - ₹145</li>
-        <li>Kulfi Faluda - ₹100</li>
-      </ul>
-
-      <!-- Sandwich -->
-      <h3>Sandwich 🥪</h3>
-      <ul>
-        <li>Veg Sandwich - ₹125</li>
-        <li>Paneer Sandwich - ₹130</li>
-        <li>Cheese Sandwich - ₹130</li>
-      </ul>
-
-      <!-- Combo Pack -->
-      <h3>Combo Pack</h3>
-      <ul>
-        <li>Paneer Chilli with Fried Rice - ₹195</li>
-        <li>Manchurian with Fried Rice - ₹185</li>
-      </ul>
-
-      <!-- Soups -->
-      <h3>Soups</h3>
-      <ul>
-        <li>Veg Manchow Soup - ₹160</li>
-        <li>Mushroom Soup - ₹180</li>
-        <li>Veg Hot & Sour Soup - ₹160</li>
-      </ul>
-
-      <!-- Shakes -->
-      <h3>Shakes</h3>
-      <ul>
-        <li>chocolate 🍫 Shake - ₹120</li>
-        <li>Butterscotch Shake - ₹160</li>
-        <li>Strawberry Shake - ₹120</li>
-        <li>Vanilla Shake - ₹120</li>
-        <li>Cold Coffee - ₹120</li>
-        <li>Oreo Shake - ₹130</li>
-        <li>Red Velvet Shake - ₹160</li>
-      </ul>
-
-      <!-- Mocktails -->
-      <h3>Mocktails</h3>
-      <ul>
-        <li>Blue Lagoon - ₹100</li>
-        <li>Virgin Mojito - ₹100</li>
-        <li>Kala Khatta - ₹90</li>
-        <li>Lemon 🍋 Soda - ₹60</li>
-      </ul>
-
-      <!-- Lassi & Fresh -->
-      <h3>Fresh & Lassi</h3>
-      <ul>
-        <li>Punjabi Lassi - ₹80</li>
-        <li>Sweet Lassi - ₹80</li>
-        <li>Strawberry 🍓 Lassi - ₹90</li>
-        <li>Kesar Badam Lassi - ₹90</li>
-      </ul>
-
-      <!-- Pastry -->
-      <h3>Pastry 🍰</h3>
-      <ul>
-        <li>Chocolate 🍫 Pastry - ₹60</li>
-        <li>Black Forest Pastry - ₹60</li>
-        <li>Pineapple 🍍 Pastry - ₹60</li>
-        <li>Strawberry 🍓 Pastry - ₹60</li>
-      </ul>
-
-      <!-- Cake -->
-      <h3>Cake 🎂 (500gm)</h3>
-      <ul>
-        <li>Chocolate Cake - ₹500</li>
-        <li>Black Forest Cake - ₹500</li>
-        <li>Pineapple Cake - ₹500</li>
-        <li>Strawberry Cake - ₹500</li>
-        <li>Vanilla Cake - ₹500</li>
-        <li>Butter Scotch Cake - ₹500</li>
-      </ul>
-
-      <!-- Rasgulla & Rasmalai -->
-      <h3>Rasgulla & Rasmalai</h3>
-      <ul>
-        <li>White Rasgulla (1pc) - ₹40</li>
-        <li>Gulab Jamun (1pc) - ₹40</li>
-        <li>Rasmalai (1pc) - ₹50</li>
-        <li>Malai Laddu (100gm) - ₹85</li>
-      </ul>
-
-      <!-- Special Dahi & Raita -->
-      <h3>Special Dahi / Raita</h3>
-      <ul>
-        <li>Plain Dahi (200gm) - ₹50</li>
-        <li>Special Raita - ₹100</li>
-        <li>Boondi Raita - ₹100</li>
-      </ul>
-
-      <!-- Drinks -->
-      <h3>Cold Drinks & Water</h3>
-      <ul>
-        <li>Mineral Water - ₹24</li>
-        <li>Cold Drink - ₹30</li>
-      </ul>
-
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <footer>
+    <p>&copy; 2025 Sweet India. All rights reserved.</p>
+  </footer>
 </body>
-  </html>
+</html>

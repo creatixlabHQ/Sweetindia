@@ -1,94 +1,100 @@
-/* Basic Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #fff;
+  background-color: #fff;
   color: #333;
 }
-a {
-  text-decoration: none;
-  color: inherit;
-}
 
-/* Navbar */
-header {
-  background-color: #ff6a00;
-  padding: 15px 30px;
+/* ✅ NAVBAR */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-nav {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  border-bottom: 2px solid #ff6a00;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #fff;
+  color: #ff6a00;
 }
-nav ul {
+.nav-links {
   list-style: none;
   display: flex;
 }
-nav li {
+.nav-links li {
   margin-left: 20px;
 }
-nav a {
-  color: white;
-  font-weight: 500;
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
-nav a:hover,
-nav a.active {
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ff6a00;
   text-decoration: underline;
 }
 
-/* Hero Section */
+/* ✅ HERO SECTION */
 .hero {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  padding: 50px 20px;
+  padding: 50px 5%;
+  background: linear-gradient(135deg, #fff4e6, #fff);
 }
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 10px;
+.hero-text {
+  flex: 1;
+  padding-right: 20px;
 }
-.hero p {
+.hero-text h1 {
+  font-size: 3rem;
+  color: #ff6a00;
+}
+.hero-text p {
+  margin: 15px 0;
   font-size: 1.2rem;
-  margin-bottom: 20px;
 }
-.hero-img {
-  width: 300px;
-  border-radius: 20px;
-  margin-top: 20px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-}
-
-/* Button */
 .btn {
-  padding: 10px 25px;
-  background-color: #ee0979;
+  padding: 12px 30px;
+  background-color: #ff6a00;
   color: #fff;
+  border: none;
   border-radius: 50px;
+  font-size: 1rem;
   font-weight: bold;
-  transition: 0.3s;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
 .btn:hover {
-  background-color: #c9005b;
+  background-color: #e04e00;
 }
 
-/* Footer */
+.hero-img img {
+  max-width: 100%;
+  width: 350px;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ FOOTER */
 footer {
-  margin-top: 50px;
-  padding: 20px;
+  background-color: #f9f9f9;
   text-align: center;
-  background-color: #f2f2f2;
+  padding: 20px;
   font-size: 0.9rem;
+  margin-top: 30px;
+  color: #777;
 }

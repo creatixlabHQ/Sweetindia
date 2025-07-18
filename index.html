@@ -1,98 +1,38 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet India | Family Restaurant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-/* ✅ SMOOTH SCROLL */
-html {
-  scroll-behavior: smooth;
-}
+  <!-- ✅ NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">🍽️ Sweet India</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff;
-  color: #333;
-}
+  <!-- ✅ HERO SECTION -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Welcome to Sweet India</h1>
+      <p>Experience the authentic taste of Basti 🍛</p>
+      <a href="menu.html" class="btn">Explore Our Menu</a>
+    </div>
+  </section>
 
-/* ✅ NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: #ffffff;
-  border-bottom: 2px solid #ff6a00;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ff6a00;
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-}
-.nav-links li {
-  margin-left: 20px;
-}
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-.nav-links a:hover,
-.nav-links a.active {
-  color: #ff6a00;
-  text-decoration: underline;
-}
+  <!-- ✅ FOOTER -->
+  <footer>
+    <p>&copy; 2025 Sweet India. All rights reserved.</p>
+  </footer>
 
-/* ✅ HERO SECTION */
-.hero {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 50px 5%;
-  background: linear-gradient(135deg, #fff4e6, #fff);
-}
-.hero-text {
-  flex: 1;
-  padding-right: 20px;
-}
-.hero-text h1 {
-  font-size: 3rem;
-  color: #ff6a00;
-}
-.hero-text p {
-  margin: 15px 0;
-  font-size: 1.2rem;
-}
-.btn {
-  padding: 12px 30px;
-  background-color: #ff6a00;
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-.btn:hover {
-  background-color: #e04e00;
-}
-
-/* ✅ FOOTER */
-footer {
-  background-color: #f9f9f9;
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  margin-top: 30px;
-  color: #777;
-}
+</body>
+</html>

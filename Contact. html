@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Sweet India</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">🍽️ Sweet India</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="contact">
+    <h2>📞 Contact Us</h2>
+    <p><strong>Phone:</strong> <a href="tel:9198951281">+91 98951 281</a></p>
+    <p><strong>Email:</strong> <a href="mailto:9198951281shubham@gmail.com">9198951281shubham@gmail.com</a></p>
+    <p><strong>Instagram:</strong> <a href="https://instagram.com/sweetindiaofficial" target="_blank">@sweetindiaofficial</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sweet India. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

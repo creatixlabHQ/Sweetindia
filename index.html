@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact | Sweet India</title>
+  <title>Sweet India | Family Restaurant</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body>
 
@@ -13,15 +18,24 @@
     <nav class="navbar">
       <div class="logo">🍽️ Sweet India</div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="menu.html">Menu</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ✅ CONTACT SECTION -->
+  <!-- ✅ HERO SECTION -->
   <section class="hero">
+    <div class="hero-text">
+      <h1>Welcome to Sweet India</h1>
+      <p>Experience the authentic taste of Basti 🍛</p>
+      <a href="menu.html" class="btn">Explore Our Menu</a>
+    </div>
+  </section>
+
+  <!-- ✅ CONTACT SECTION -->
+  <section class="hero" id="contact">
     <div class="hero-text">
       <h1>Contact Us</h1>
       <p><strong>📞 Phone:</strong> <a href="tel:+9198951281">+91 98951 281</a></p>

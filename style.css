@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+/* ✅ SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff;

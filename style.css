@@ -1,299 +1,53 @@
-/* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap');
+document.addEventListener('DOMContentLoaded', () => {
+    'use strict';
 
-/* --- बेसिक स्टाइलिंग --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    // --- Change header style on scroll ---
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 
-html {
-    scroll-behavior: smooth; /* स्मूथ स्क्रॉलिंग के लिए */
-}
+    // --- Mobile menu toggle ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
 
-body {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
-}
+    if (menuToggle && navUl) {
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+        });
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 0 20px;
-}
-
-section {
-    padding: 60px 0;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: #c45d2b;
-    font-family: 'Great Vibes', cursive;
-}
-
-/* --- हैडर और नेविगेशन --- */
-header {
-    background: #fff;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
-    color: #c45d2b;
-    font-weight: normal;
-}
-
-nav ul {
-    list-style: none;
-}
-
-nav ul li {
-    display: inline-block;
-    margin-left: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 700;
-    padding: 5px 10px;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #c45d2b;
-}
-
-/* --- हीरो सेक्शन --- */
-.hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1974&auto=format&fit=crop') no-repeat center center/cover;
-    color: #fff;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-top: 80px; /* हैडर की ऊंचाई के लिए */
-}
-
-.hero h2 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.btn {
-    display: inline-block;
-    background: #c45d2b;
-    color: #fff;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    border: none;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background: #a94f22;
-    transform: translateY(-2px);
-}
-
-/* --- मेनू सेक्शन --- */
-.menu-section {
-    background: #fff;
-}
-
-.menu-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-.menu-item {
-    background: #f9f9f9;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-.menu-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.menu-item h3 {
-    margin: 15px 0 10px;
-    font-size: 1.5rem;
-    color: #333;
-}
-
-.menu-item p {
-    padding: 0 15px;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.menu-item .price {
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #c45d2b;
-    margin: 15px 0;
-}
-
-.menu-note {
-    text-align: center;
-    font-style: italic;
-    color: #555;
-}
-
-/* --- हमारे बारे में सेक्शन --- */
-.about-section p {
-    max-width: 800px;
-    margin: 0 auto 20px auto;
-    text-align: center;
-    font-size: 1.1rem;
-}
-
-/* --- संपर्क सेक्शन --- */
-.contact-section {
-    background: #fff;
-}
-
-.contact-section p {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.contact-form {
-    max-width: 600px;
-    margin: 40px auto 0 auto;
-    background: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-.contact-form h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 700;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.form-group textarea {
-    resize: vertical;
-}
-
-.contact-form .btn {
-    width: 100%;
-    font-size: 1.1rem;
-}
-
-/* --- फुटर --- */
-footer {
-    background: #333;
-    color: #fff;
-    padding: 30px 0;
-    text-align: center;
-}
-
-footer .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.social-links {
-    margin-top: 15px;
-}
-
-.social-links a {
-    margin: 0 10px;
-}
-
-.social-links img {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-}
-
-.social-links img:hover {
-    transform: scale(1.2);
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
+        // Close menu when a nav link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navUl.classList.contains('active')) {
+                    navUl.classList.remove('active');
+                }
+            });
+        });
     }
 
-    .logo {
-        margin-bottom: 10px;
-    }
-    
-    nav ul {
-        padding: 0;
-    }
+    // --- Reveal on scroll animations ---
+    const animatedElements = document.querySelectorAll('.about-content, .menu-card, .gallery-item');
 
-    nav ul li {
-        margin: 0 10px;
-    }
-    
-    .hero h2 {
-        font-size: 3rem;
-    }
-  }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Stop observing once it's visible
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1 // Start animation when 10% of the element is visible
+    });
+
+    animatedElements.forEach(el => {
+        el.classList.add('animated');
+        observer.observe(el);
+    });
+
+});

@@ -1,47 +1,53 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    'use strict';
 
-    // --- स्मूथ स्क्रॉलिंग ---
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault(); // डिफ़ॉल्ट व्यवहार को रोकें
-
-            let targetId = this.getAttribute('href');
-            let targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                // हेडर की ऊंचाई प्राप्त करें ताकि स्क्रॉलिंग सही जगह पर रुके
-                const headerOffset = document.querySelector('header').offsetHeight;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
-        });
+    // --- Change header style on scroll ---
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
 
-    // --- संपर्क फ़ॉर्म सबमिशन ---
-    const contactForm = document.querySelector('.contact-form form');
+    // --- Mobile menu toggle ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // डिफ़ॉल्ट फ़ॉर्म सबमिशन को रोकें
+    if (menuToggle && navUl) {
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+        });
 
-            // फ़ॉर्म डेटा प्राप्त करें (आप इसे सर्वर पर भेज सकते हैं)
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            // उपयोगकर्ता के लिए एक संदेश प्रदर्शित करें
-            alert(`धन्यवाद, ${name}! आपका संदेश सफलतापूर्वक भेज दिया गया है।`);
-
-            // फ़ॉर्म को रीसेट करें
-            contactForm.reset();
+        // Close menu when a nav link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navUl.classList.contains('active')) {
+                    navUl.classList.remove('active');
+                }
+            });
         });
     }
+
+    // --- Reveal on scroll animations ---
+    const animatedElements = document.querySelectorAll('.about-content, .menu-card, .gallery-item');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Stop observing once it's visible
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1 // Start animation when 10% of the element is visible
+    });
+
+    animatedElements.forEach(el => {
+        el.classList.add('animated');
+        observer.observe(el);
+    });
 
 });

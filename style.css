@@ -70,7 +70,7 @@ nav {
     font-size: 1.8rem;
     font-weight: 700;
     color: #d4a373;
-    text-decoration: none;
+    text-decoration: line-through;
 }
 
 nav ul {

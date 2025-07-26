@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.1 // Start animation when 10% of the element is visible
+        threshold: 0.1 // Start animation when 100% of the element is visible
     });
 
     animatedElements.forEach(el => {

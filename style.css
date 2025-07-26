@@ -70,7 +70,7 @@ nav {
     font-size: 1.8rem;
     font-weight: 700;
     color: #d4a373;
-    text-decoration: line-through;
+    text-decoration: none;
 }
 
 nav ul {
@@ -170,7 +170,7 @@ nav ul li a:hover::after {
 .about-image img {
     width: 100%;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
 }
 
 .about-text {

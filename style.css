@@ -113,7 +113,7 @@ nav ul li a:hover::after {
 
 /* --- Hero Section --- */
 .hero {
-    height: 60vh;
+    height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.postimg.cc/W1Fgbqt2/file-0000000091e061f4a9a11e6e2cee90e3.png?q=80&w=1974&auto=format&fit=crop" alt="Restaurant Interior">') no-repeat center center/cover;
     display: flex;
     align-items: center;

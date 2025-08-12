@@ -1,65 +1,754 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome - Restaurant</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet India Family Restaurant | Authentic Indian Cuisine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- CSS Section -->
+    <style>
+        :root {
+            --primary: #d72323;
+            --secondary: #f5a623;
+            --dark: #333333;
+            --light: #f8f8f8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/72bbdef0-0e69-41e9-a768-dc49e9aba629.png') center/cover no-repeat;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero-content {
+            animation: slideUp 1s ease-in-out;
+        }
+
+        /* Menu Section */
+        .menu-card {
+            transition: all 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dish-badge {
+            animation: pulse 2s infinite;
+        }
+
+        /* Gallery */
+        .gallery-item {
+            overflow: hidden;
+        }
+
+        .gallery-img {
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* About Section */
+        .about-img {
+            animation: slideInLeft 1s ease-in-out;
+        }
+
+        .about-content {
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--dark), #000);
+        }
+
+        /* Scroll Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .animate-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reservation Form */
+        .reservation-form {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--secondary);
+        }
+    </style>
 </head>
 <body>
-<header>
-  <nav class="container">
-    <a href="index.html" class="logo">Shankar Restaurant</a>
-    <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="order.html">Order</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-  </nav>
-</header>
+    <!-- HTML Section -->
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full py-4 px-6 md:px-12 flex justify-between items-center">
+        <div class="logo">
+            <a href="#" class="text-2xl font-bold text-white">Sweet India</a>
+        </div>
+        <div class="nav-links hidden md:block">
+            <ul class="flex space-x-8">
+                <li><a href="#home" class="nav-link text-white hover:text-yellow-400 transition">Home</a></li>
+                <li><a href="#about" class="nav-link text-white hover:text-yellow-400 transition">About</a></li>
+                <li><a href="#menu" class="nav-link text-white hover:text-yellow-400 transition">Menu</a></li>
+                <li><a href="#gallery" class="nav-link text-white hover:text-yellow-400 transition">Gallery</a></li>
+                <li><a href="#reservation" class="nav-link text-white hover:text-yellow-400 transition">Reservation</a></li>
+            </ul>
+        </div>
+        <div class="md:hidden">
+            <button class="text-white text-2xl" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-<section class="hero">
-  <div>
-    <h1>Shankar Restaurant & Bakers</h1>
-    <p>South Indian & Bakery Specialities – Taste, Tradition, Trust</p>
-    <a href="order.html" class="btn">Order Now</a>
-  </div>
-</section>
-
-<section class="container">
-  <h2 class="section-title">Our Specialties</h2>
-  <div class="menu-grid">
-    <div class="menu-card">
-      <img src="" alt="South Indian Dish">
-      <h3>Dosa</h3>
-      <p>Crispy & healthy South Indian.</p>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
+        <button class="absolute top-6 right-6 text-white text-3xl" id="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="text-center">
+            <li class="mb-6"><a href="#home" class="text-2xl text-white hover:text-yellow-400 transition">Home</a></li>
+            <li class="mb-6"><a href="#about" class="text-2xl text-white hover:text-yellow-400 transition">About</a></li>
+            <li class="mb-6"><a href="#menu" class="text-2xl text-white hover:text-yellow-400 transition">Menu</a></li>
+            <li class="mb-6"><a href="#gallery" class="text-2xl text-white hover:text-yellow-400 transition">Gallery</a></li>
+            <li><a href="#reservation" class="text-2xl text-white hover:text-yellow-400 transition">Reservation</a></li>
+        </ul>
     </div>
-    <div class="menu-card">
-      <img src="" alt="Bakery">
-      <h3>Fresh Bakery</h3>
-      <p>Breads, cakes and more.</p>
-    </div>
-  </div>
-</section>
 
-<footer>
-  <div class="container">
-    <p>© 2025 Shankar Restaurant & Bakers | All rights reserved.</p>
-    <p>
-      <span class="footer-social">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </span>
-    </p>
-    <p>
-      <b>Address:</b> Your Address, City | <b>Phone:</b> +91 1234567890
-    </p>
-  </div>
-</footer>
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center text-center text-white relative" id="home">
+        <div class="hero-content px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">SWEET INDIA</h1>
+            <h2 class="text-2xl md:text-3xl mb-4 font-light">Family Restaurant & Sweets</h2>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">A Taste of Tradition Since 1995</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#menu" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-medium transition transform hover:scale-105">View Menu</a>
+                <a href="#reservation" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-medium transition transform hover:scale-105">Book a Table</a>
+            </div>
+        </div>
+        <div class="scroll-down absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 px-6 md:px-12 bg-white" id="about">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
+                <span class="inline-block border-b-4 border-yellow-400 pb-2">Our Story</span>
+            </h2>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="about-img md:w-1/2">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/30d04bd6-c218-477d-a455-663215357c84.png" alt="Chefs preparing traditional Indian dishes in a modern kitchen with spices and fresh ingredients" class="rounded-lg shadow-xl">
+                </div>
+                <div class="about-content md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Authentic Indian Cuisine Since 1995</h3>
+                    <p class="text-gray-600 mb-6">Sweet India Family Restaurant brings you the true essence of Indian culinary traditions. Founded by Chef Rajesh Kumar in 1995, we've been serving authentic flavors with a touch of home-style cooking.</p>
+                    <p class="text-gray-600 mb-6">Our recipes come from generations of family traditions, using only the freshest ingredients and aromatic spices imported directly from India.</p>
+                    <div class="stats grid grid-cols-2 gap-6 mb-6">
+                        <div class="stat">
+                            <h4 class="text-3xl font-bold text-yellow-500">25+</h4>
+                            <p class="text-gray-600">Years of Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h4 class="text-3xl font-bold text-yellow-500">100+</h4>
+                            <p class="text-gray-600">Authentic Dishes</p>
+                        </div>
+                        <div class="stat">
+                            <h4 class="text-3xl font-bold text-yellow-500">50+</h4>
+                            <p class="text-gray-600">Spices Varieties</p>
+                        </div>
+                        <div class="stat">
+                            <h4 class="text-3xl font-bold text-yellow-500">10K+</h4>
+                            <p class="text-gray-600">Happy Customers</p>
+                        </div>
+                    </div>
+                    <a href="#menu" class="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-medium transition transform hover:scale-105">Explore Our Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row items-center justify-between bg-red-600 rounded-xl p-8 text-white">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">Today's Special Offer</h3>
+                    <p class="text-lg">Get 20% off on all biryanis + free dessert</p>
+                </div>
+                <a href="#reservation" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-medium transition transform hover:scale-105">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="py-20 px-6 md:px-12 bg-white" id="menu">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-4">
+                <span class="inline-block pb-2">OUR SPECIAL MENU</span>
+            </h2>
+            <div class="flex justify-center mb-8">
+                <div class="w-24 h-1 bg-yellow-400"></div>
+            </div>
+            <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto">Discover our exquisite selection of traditional Indian dishes prepared with authentic spices</p>
+            
+            <div class="flex justify-center mb-12">
+                <div class="flex space-x-2 bg-gray-100 p-1 rounded-full">
+                    <button class="menu-tab px-6 py-2 rounded-full font-medium" data-category="all">All</button>
+                    <button class="menu-tab px-6 py-2 rounded-full font-medium" data-category="starters">Starters</button>
+                    <button class="menu-tab px-6 py-2 rounded-full font-medium" data-category="main-course">Main Course</button>
+                    <button class="menu-tab px-6 py-2 rounded-full font-medium" data-category="desserts">Desserts</button>
+                    <button class="menu-tab px-6 py-2 rounded-full font-medium" data-category="beverages">Beverages</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-lg animate-on-scroll" data-category="starters">
+                    <div class="dish-badge bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full inline-block absolute top-4 right-4">BESTSELLER</div>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0c7f2de1-1fca-458e-8aef-900cec7b0e21.png" alt="Golden brown samosas with mint chutney on a banana leaf" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Vegetable Samosa</h3>
+                            <span class="text-red-600 font-bold">₹120</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Crispy pastry filled with spiced potatoes and peas, served with mint chutney</p>
+                        <button class="add-to-cart bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-lg animate-on-scroll" data-category="starters">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4addf72d-aa62-4e9f-b881-1fb1c34ebb51.png" alt="Tandoori chicken pieces with onion rings and lemon wedges" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Tandoori Chicken</h3>
+                            <span class="text-red-600 font-bold">₹320</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Juicy chicken marinated in yogurt and spices, cooked in traditional clay oven</p>
+                        <button class="add-to-cart bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-lg animate-on-scroll" data-category="main-course">
+                    <div class="dish-badge bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full inline-block absolute top-4 right-4">CHEF'S SPECIAL</div>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c9ddb829-5770-4b56-b12d-c9a6c1d40517.png" alt="Steaming plate of chicken biryani with raita and boiled egg" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Chicken Biryani</h3>
+                            <span class="text-red-600 font-bold">₹280</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Fragrant basmati rice cooked with chicken and special spices, served with raita</p>
+                        <button class="add-to-cart bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 4 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-lg animate-on-scroll" data-category="main-course">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/50592024-2254-4b75-84cc-24cab04df46d.png" alt="Butter chicken in copper bowl with naan bread on side" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Butter Chicken</h3>
+                            <span class="text-red-600 font-bold">₹300</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Tender chicken pieces in rich tomato gravy with butter and cream</p>
+                        <button class="add-to-cart bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 5 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-lg animate-on-scroll" data-category="desserts">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/027eb38c-a33a-4743-9c5e-0a56d3a72cca.png" alt="Gulab jamun in traditional bowl with saffron strands" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Gulab Jamun</h3>
+                            <span class="text-red-600 font-bold">₹90</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Soft milk balls soaked in rose-flavored sugar syrup, served warm</p>
+                        <button class="add-to-cart bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 6 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-lg animate-on-scroll" data-category="beverages">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ff52ea65-8eef-44b1-bd2b-a6f7004dbad6.png" alt="Masala chai in traditional kulhad with spices floating on top" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Masala Chai</h3>
+                            <span class="text-red-600 font-bold">₹60</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Traditional Indian tea brewed with aromatic spices and milk</p>
+                        <button class="add-to-cart bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-20 px-6 md:px-12 bg-gray-100" id="gallery">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+                <span class="inline-block border-b-4 border-yellow-400 pb-2">Our Gallery</span>
+            </h2>
+            <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto">Explore our restaurant ambiance and delicious dishes</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg animate-on-scroll">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e0aa5aab-8e96-45d0-b1f2-d77ecbcdb3df.png" alt="Traditional Indian restaurant interior with wooden furniture and warm lighting" class="gallery-img w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg animate-on-scroll">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3a997d58-58bf-4808-8253-2909cacc5308.png" alt="Chef preparing traditional naan bread in tandoor oven" class="gallery-img w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg animate-on-scroll">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c3474df9-ceff-4ff2-80f8-0a39a35bf500.png" alt="Colorful spread of Indian desserts including jalebi, gulab jamun, and rasmalai" class="gallery-img w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg animate-on-scroll">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2772b9ee-fe27-47e6-b79e-6f3ca33b6233.png" alt="Family enjoying Indian thali meal with various curries and breads" class="gallery-img w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg animate-on-scroll">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cb53a5e9-0279-4ded-a377-d48d7229ee9f.png" alt="Chef displaying fresh spices on wooden board" class="gallery-img w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg animate-on-scroll">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0b63ccc4-1664-498d-a51c-d64e00c412e4.png" alt="Beautiful outdoor dining area with traditional Indian decor" class="gallery-img w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="py-20 px-6 md:px-12 bg-white" id="reservation">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-4">
+                <span class="inline-block pb-2">BOOK A TABLE</span>
+            </h2>
+            <div class="flex justify-center mb-8">
+                <div class="w-24 h-1 bg-yellow-400"></div>
+            </div>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Book your table now and enjoy authentic Indian dining experience</p>
+            
+            <div class="reservation-form bg-gray-100 rounded-xl p-8 max-w-4xl mx-auto">
+                <form id="booking-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="guests" class="block text-gray-700 mb-2">Number of Guests</label>
+                            <select id="guests" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500" required>
+                                <option value="">Select</option>
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5">5 People</option>
+                                <option value="6">6 People</option>
+                                <option value="7">7+ People</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="date" class="block text-gray-700 mb-2">Date</label>
+                            <input type="date" id="date" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="time" class="block text-gray-700 mb-2">Time</label>
+                            <select id="time" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500" required>
+                                <option value="">Select</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="12:30">12:30 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="13:30">1:30 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="18:30">6:30 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="19:30">7:30 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                                <option value="20:30">8:30 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="special-requests" class="block text-gray-700 mb-2">Special Requests</label>
+                        <textarea id="special-requests" rows="3" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500"></textarea>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-medium transition transform hover:scale-105">Book Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 px-6 md:px-12 bg-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
+                <span class="inline-block border-b-4 border-yellow-400 pb-2">What Our Customers Say</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-lg animate-on-scroll">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/640e990a-b183-48d3-b354-a4c5cc309438.png" alt="Smiling customer with Indian food in background" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Rahul Sharma</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The best Butter Chicken I've ever had! Authentic flavors that remind me of home cooking. The service is excellent and the ambiance is perfect for family dinners."</p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-lg animate-on-scroll">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4ceb8c39-357c-4974-9ceb-3f6aff689e5d.png" alt="Happy family at restaurant table" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Priya Patel</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Sweet India has become our regular weekend spot. The biryanis are cooked to perfection and the garlic naan is heavenly. Perfect place for vegetarians too!"</p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-lg animate-on-scroll">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f492fd63-6365-4a84-9103-0d2a17742ed1.png" alt="Tourist enjoying Indian cuisine" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">David Wilson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"As someone new to Indian food, I was guided perfectly by the staff. The Chicken Tikka Masala was incredible - absolutely worth trying!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="py-16 px-6 md:px-12 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">SWEET INDIA</h3>
+                    <p class="mb-4 italic">A family tradition of authentic Indian cuisine since 1995</p>
+                    <div class="social-links flex space-x-4">
+                        <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-yellow-400 transition"><i class="fab fa-yelp"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-yellow-400 transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-yellow-400 transition">About Us</a></li>
+                        <li><a href="#menu" class="text-gray-300 hover:text-yellow-400 transition">Our Menu</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-yellow-400 transition">Gallery</a></li>
+                        <li><a href="#reservation" class="text-gray-300 hover:text-yellow-400 transition">Reservations</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-yellow-400"></i>
+                            <span>123 Food Street, Delhi, India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-yellow-400"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-yellow-400"></i>
+                            <span>info@sweetindia.com</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Opening Hours</h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span>Monday - Thursday</span>
+                            <span>11:00 - 22:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Friday - Saturday</span>
+                            <span>11:00 - 23:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span>11:00 - 21:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p>&copy; 2023 Sweet India Family Restaurant. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Section -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Menu Filtering
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuCards = document.querySelectorAll('.menu-card');
+
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                menuTabs.forEach(t => t.classList.remove('bg-yellow-500', 'text-white'));
+                // Add active class to clicked tab
+                tab.classList.add('bg-yellow-500', 'text-white');
+                
+                const category = tab.dataset.category;
+                
+                menuCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Set first tab as active by default
+        if (menuTabs.length > 0) {
+            menuTabs[0].classList.add('bg-yellow-500', 'text-white');
+        }
+
+        // Form Submission
+        const bookingForm = document.getElementById('booking-form');
+        
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const guests = document.getElementById('guests').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const specialRequests = document.getElementById('special-requests').value;
+            
+            // Here you would typically send the data to a server
+            // For demo purposes, we'll just show an alert
+            alert(`Thank you ${name}! Your table for ${guests} on ${date} at ${time} has been booked. We'll send confirmation details to ${email}.`);
+            
+            // Reset form
+            bookingForm.reset();
+        });
+
+        // Add to Cart functionality
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const menuItem = button.closest('.menu-card');
+                const itemName = menuItem.querySelector('h3').textContent;
+                const itemPrice = menuItem.querySelector('span').textContent;
+                
+                alert(`Added ${itemName} (${itemPrice}) to your cart!`);
+            });
+        });
+    </script>
 </body>
 </html>

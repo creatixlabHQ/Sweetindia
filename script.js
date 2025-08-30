@@ -1,4 +1,3 @@
-<script>
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -114,4 +113,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-</script>

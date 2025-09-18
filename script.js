@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const bookingForm = document.getElementById('booking-form');
     if (bookingForm) {
         bookingForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+            // ❌ preventDefault hata diya hai taki FormSubmit email bhej sake
 
             // Get form values
             const name = document.getElementById('name').value;
@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const time = document.getElementById('time').value;
             const specialRequests = document.getElementById('special-requests').value;
 
-            // Show alert
+            // Show confirmation alert
             alert(`Thank you ${name}! Your table for ${guests} on ${date} at ${time} has been booked. We'll send confirmation details to ${email}.`);
 
-            // Reset form
-            bookingForm.reset();
+            // ✅ Ab form normal submit hoga (FormSubmit ke through email aayega)
+            // reset() ki zarurat nahi hai kyunki redirect/thank you page handle karega
         });
     }
 

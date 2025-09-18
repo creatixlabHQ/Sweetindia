@@ -393,16 +393,31 @@
                         <button class="add-to-cart bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">Add to Cart</button>
                     </div>
                     <form action="https://formsubmit.co/9198951281shubham@gmail.com" method="POST">
+  <!-- Name -->
   <input type="text" name="name" placeholder="Your Name" required>
+
+  <!-- Email -->
   <input type="email" name="email" placeholder="Your Email" required>
-  <textarea name="order" placeholder="Your Order" required></textarea>
 
-  <!-- FormSubmit options -->
+  <!-- Phone Number -->
+  <input type="tel" name="phone" placeholder="Your Phone Number" required>
+
+  <!-- Full Address -->
+  <textarea name="address" placeholder="Your Full Address" required></textarea>
+
+  <!-- Pincode -->
+  <input type="text" name="pincode" placeholder="Pincode" required>
+
+  <!-- Order Details -->
+  <textarea name="order" placeholder="Your Order Details" required></textarea>
+
+  <!-- Optional Hidden Fields -->
   <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://creatixlabhq.github.io/Sweetindiafamilyresturant/">
+  <input type="hidden" name="_next" value="order successfully placed">
 
+  <!-- Submit Button -->
   <button type="submit">Place Order</button>
-</form>
+                    </form>
 
                 </div>
             </div>

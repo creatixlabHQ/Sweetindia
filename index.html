@@ -50,6 +50,21 @@
         .nav-link {
             position: relative;
         }
+        .cart {
+    position: relative;
+    cursor: pointer;
+}
+.cart-count {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.75rem;
+    background: var(--secondary, #f5a623);
+    color: #222;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 7px;
+    border-radius: 999px;
+}
 
         .nav-link::after {
             content: '';
@@ -194,6 +209,11 @@
             <a href="#" class="text-2xl font-bold text-white">Sweet India</a>
         </div>
         <div class="nav-links hidden md:block">
+            <!-- Cart Icon -->
+<div class="cart flex items-center ml-6 relative cursor-pointer">
+  <i class="fas fa-shopping-cart text-2xl text-white"></i>
+  <span class="cart-count absolute -top-2 -right-3 bg-yellow-400 text-xs font-bold px-2 py-0.5 rounded-full text-black">0</span>
+</div>
             <ul class="flex space-x-8">
                 <li><a href="#home" class="nav-link text-white hover:text-yellow-400 transition">Home</a></li>
                 <li><a href="#about" class="nav-link text-white hover:text-yellow-400 transition">About</a></li>

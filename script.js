@@ -101,8 +101,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Add to Cart functionality
+    // Add to Cart functionality with cart count
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartCount = document.querySelector('.cart-count');
+    let count = 0;
+
     addToCartButtons.forEach(button => {
         button.addEventListener('click', () => {
             const menuItem = button.closest('.menu-card');
@@ -110,6 +113,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const itemPrice = menuItem.querySelector('span').textContent;
 
             alert(`Added ${itemName} (${itemPrice}) to your cart!`);
+            count++;
+            if(cartCount) {
+                cartCount.textContent = count;
+            }
         });
     });
 });

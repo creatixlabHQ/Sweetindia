@@ -74,6 +74,13 @@ function removeFromCart(id) {
   updateCartDisplay();
 }
 
+// Function to clear the cart
+function clearCart() {
+  cart = [];
+  localStorage.removeItem('cart');
+  updateCartDisplay();
+}
+
 // Load cart on page load
 document.addEventListener('DOMContentLoaded', function () {
   updateCartDisplay();

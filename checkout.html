@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Checkout - SweetIndia</title>
+  <style>
+    .step { display: none; } /* Hide steps by default */
+    .step.active { display: block; } /* Show active step */
+    button { margin: 5px; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Checkout</h1>
+
+  <!-- Step 1: Shipping -->
+  <div id="step1" class="step active">
+    <h2>Step 1: Shipping Address</h2>
+    <form id="shipping-form">
+      <input type="text" placeholder="Full Name" required><br>
+      <input type="text" placeholder="Address" required><br>
+      <input type="text" placeholder="City" required><br>
+      <input type="text" placeholder="PIN Code" required><br>
+      <input type="tel" placeholder="Phone" required><br>
+      <button type="button" onclick="nextStep(2)">Next</button>
+    </form>
+  </div>
+
+  <!-- Step 2: Order Summary & Payment -->
+  <div id="step2" class="step">
+    <h2>Step 2: Order Summary</h2>
+    <ul id="checkout-cart-items"></ul>
+    <p id="checkout-total">Total: ₹0</p>
+    <h3>Payment Method</h3>
+    <select id="payment-method">
+      <option>COD (Cash on Delivery)</option>
+      <option>Card</option>
+      <option>UPI</option>
+    </select>
+    <input type="text" id="card-details" placeholder="Card/UPI Details (Demo)" style="display:none;"><br>
+    <button type="button" onclick="nextStep(3)">Confirm Order</button>
+    <button type="button" onclick="prevStep(1)">Back</button>
+  </div>
+
+  <!-- Step 3: Confirmation -->
+  <div id="step3" class="step">
+    <h2>Order Confirmed!</h2>
+    <p>Thank you! Your order has been placed. Order ID: <span id="order-id"></span></p>
+    <button onclick="window.location.href='index.html'">Continue Shopping</button>
+  </div>
+
+  <!-- JS Code merged -->
+  <script>
+    // Sample cart (agar localStorage me ho to use load karna)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [
+      { name: "Dosa", quantity: 2, price: 80 },
+      { name: "Laddu", quantity: 1, price: 120 }
+    ];
+
+    // Load cart and display in checkout
+    document.addEventListener('DOMContentLoaded', function() {
+      const cartItems = document.getElementById('checkout-cart-items');
+      let total = 0;
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} x ${item.quantity} - ₹${item.price * item.quantity}`;
+        cartItems.appendChild(li);
+        total += item.price * item.quantity;
+      });
+      document.getElementById('checkout-total').textContent = `Total: ₹${total}`;
+
+      // Payment method toggle
+      document.getElementById('payment-method').addEventListener('change', function() {
+        const cardInput = document.getElementById('card-details');
+        cardInput.style.display = this.value === 'Card' ? 'block' : 'none';
+      });
+    });
+
+    // Step navigation
+    let currentStep = 1;
+    function nextStep(step) {
+      document.getElementById(`step${currentStep}`).classList.remove('active');
+      currentStep = step;
+      document.getElementById(`step${currentStep}`).classList.add('active');
+      
+      if (step === 3) {
+        // Simulate order completion
+        const orderId = 'ORD' + Date.now();
+        document.getElementById('order-id').textContent = orderId;
+        // Clear cart on success
+        cart = [];
+        localStorage.removeItem('cart');
+        alert('Order placed successfully!');
+      }
+    }
+
+    function prevStep(step) {
+      document.getElementById(`step${currentStep}`).classList.remove('active');
+      currentStep = step;
+      document.getElementById(`step${currentStep}`).classList.add('active');
+    }
+  </script>
+</body>
+</html>

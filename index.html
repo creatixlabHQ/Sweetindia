@@ -50,21 +50,13 @@
         .nav-link {
             position: relative;
         }
-        .cart {
-    position: relative;
-    cursor: pointer;
-}
-.cart-count {
-    position: absolute;
-    top: -0.5rem;
-    right: -0.75rem;
-    background: var(--secondary, #f5a623);
-    color: #222;
-    font-size: 0.75rem;
-    font-weight: bold;
-    padding: 2px 7px;
-    border-radius: 999px;
-}
+        <div class="product-card" data-id="1" data-name="Gulab Jamun" data-price="150">
+  <img src="gulab-jamun.jpg" alt="Gulab Jamun">
+  <h3>Gulab Jamun</h3>
+  <p>Price: ₹150</p>
+  <button onclick="addToCart(1, 'Gulab Jamun', 150)">Add to Cart</button>
+</div>
+<!-- Repeat for other products, changing data-id, data-name, data-price -->
 
         .nav-link::after {
             content: '';

@@ -20,7 +20,7 @@ function addToCart(id, name, price) {
 function updateCartDisplay() {
   const cartItems = document.getElementById('cart-items'); // e.g., <ul id="cart-items">
   const cartTotal = document.getElementById('cart-total'); // e.g., <span id="cart-total"></span>
-  const cartCount = document.querySelector('.cart-count'); // Update navbar cart icon count
+  const cartCountElement = document.getElementById('cart-count'); // e.g., <span id="cart-count"></span>
 
   if (cartItems) {
     cartItems.innerHTML = '';
@@ -42,12 +42,12 @@ function updateCartDisplay() {
     if (cartTotal) {
       cartTotal.innerHTML = `Total: ₹${total}`;
     }
-  }
 
-  // Update cart count in navbar icon
-  if (cartCount) {
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = count;
+    // Update cart count in element with id="cart-count"
+    const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartCountElement) {
+      cartCountElement.innerHTML = cartCount;
+    }
   }
 }
 

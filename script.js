@@ -1,92 +1,4 @@
-// Cart array (load from localStorage on page load)
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Function to add item to cart
-function addToCart(id, name, price) {
-  id = Number(id); // Ensure id is a number for consistency
-  price = Number(price);
-  const existingItem = cart.find(item => item.id === id);
-  if (existingItem) {
-    existingItem.quantity += 1; // Increment if already in cart
-  } else {
-    cart.push({ id, name, price, quantity: 1 }); // Add new item
-  }
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartDisplay(); // Update cart UI
-  alert(`${name} added to cart!`);
-}
-
-// Function to update cart display (e.g., in a cart modal or page)
-function updateCartDisplay() {
-  const cartItems = document.getElementById('cart-items'); // e.g., <ul id="cart-items">
-  const cartTotal = document.getElementById('cart-total'); // e.g., <span id="cart-total"></span>
-  const cartCountElement = document.getElementById('cart-count'); // e.g., <span id="cart-count"></span>
-
-  if (cartItems) {
-    cartItems.innerHTML = '';
-    let total = 0;
-
-    cart.forEach(item => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        ${item.name} - ₹${item.price} x ${item.quantity}
-        <button onclick="updateQuantity(${item.id}, -1)">-</button>
-        <button onclick="updateQuantity(${item.id}, 1)">+</button>
-        <button onclick="removeFromCart(${item.id})">Remove</button>
-        <span>Subtotal: ₹${item.price * item.quantity}</span>
-      `;
-      cartItems.appendChild(li);
-      total += item.price * item.quantity;
-    });
-
-    if (cartTotal) {
-      cartTotal.innerHTML = `Total: ₹${total}`;
-    }
-
-    // Update cart count in element with id="cart-count"
-    const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-    if (cartCountElement) {
-      cartCountElement.innerHTML = cartCount;
-    }
-  }
-}
-
-// Function to update quantity
-function updateQuantity(id, change) {
-  id = Number(id);
-  const item = cart.find(item => item.id === id);
-  if (item) {
-    item.quantity += change;
-    if (item.quantity <= 0) {
-      removeFromCart(id);
-      return;
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartDisplay();
-  }
-}
-
-// Function to remove item
-function removeFromCart(id) {
-  id = Number(id);
-  cart = cart.filter(item => item.id !== id);
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartDisplay();
-}
-
-// Function to clear the cart
-function clearCart() {
-  cart = [];
-  localStorage.removeItem('cart');
-  updateCartDisplay();
-}
-
-// Load cart on page load
 document.addEventListener('DOMContentLoaded', function () {
-  updateCartDisplay();
-
-  // --- Other unrelated page JS from your previous code ---
-
   // Mobile Menu Toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenuClose = document.getElementById('mobile-menu-close');
@@ -166,40 +78,55 @@ document.addEventListener('DOMContentLoaded', function () {
     menuTabs[0].classList.add('bg-yellow-500', 'text-white');
   }
 
-  // Form Submission
+  // Booking Form Submission (keeps default submit so FormSubmit works)
   const bookingForm = document.getElementById('booking-form');
   if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
-      // ❌ preventDefault hata diya hai taki FormSubmit email bhej sake
-
-      // Get form values
+      // Do not prevent default — keep FormSubmit behaviour
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const phone = document.getElementById('phone').value;
       const guests = document.getElementById('guests').value;
       const date = document.getElementById('date').value;
       const time = document.getElementById('time').value;
-      const specialRequests = document.getElementById('special-requests').value;
-
-      // Show confirmation alert
+      // Show a friendly message — form will then submit normally
       alert(`Thank you ${name}! Your table for ${guests} on ${date} at ${time} has been booked. We'll send confirmation details to ${email}.`);
-
-      // ✅ Ab form normal submit hoga (FormSubmit ke through email aayega)
-      // reset() ki zarurat nahi hai kyunki redirect/thank you page handle karega
     });
   }
 
-  // Change: Use the global addToCart for menu items (remove old event code)
+  // Convert Add-to-Cart buttons into "Order Now" behavior (no cart usage)
+  // Behavior: navigate to #reservation (on-page) or to a custom link if provided via data-order-link
   const addToCartButtons = document.querySelectorAll('.add-to-cart');
   addToCartButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    // Replace existing click behavior with a redirect to reservation or a provided link
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
       const menuItem = button.closest('.menu-card');
-      // You must set data-id, data-name, data-price on the .menu-card for this to work
-      const id = menuItem.getAttribute('data-id') || Date.now(); // fallback to timestamp if missing
-      const name = menuItem.querySelector('h3').textContent.trim();
-      const priceText = menuItem.querySelector('span').textContent.replace(/[^\d]/g, '');
-      const price = Number(priceText) || 0;
-      addToCart(id, name, price);
+      // Optional: if author added a data-order-link attribute on button, use that
+      const customLink = button.getAttribute('data-order-link') || (menuItem && menuItem.getAttribute('data-order-link'));
+      if (customLink) {
+        // open custom link in same tab
+        window.location.href = customLink;
+        return;
+      }
+      // Default: navigate to reservation section
+      // If there's a dedicated reservation page, you can change '#reservation' to 'reservation.html' or a WhatsApp URL
+      if (document.querySelector('#reservation')) {
+        // smooth scroll if section exists
+        document.querySelector('#reservation').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // fallback: go to reservation page or contact (change as needed)
+        window.location.href = 'index.html#reservation';
+      }
     });
   });
+
+  // Optional small accessibility improvement: ensure keyboard users can "activate" menu-card links
+  document.querySelectorAll('.menu-card a, .menu-card button').forEach(el => {
+    el.setAttribute('tabindex', '0');
+  });
+
+  // Clean up: remove any visible cart UI elements if you prefer (uncomment to enable)
+  // const cartUi = document.querySelector('.cart, #cart-count, .cart-count, a[href*="cart.html"], a[href*="checkout.html"]');
+  // if (cartUi) cartUi.remove();
 });

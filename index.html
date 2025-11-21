@@ -404,35 +404,11 @@
                         <p class="text-gray-600 mb-4">Traditional Indian tea brewed with aromatic spices and milk</p>
                         <button class="add-to-cart bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">Add to Cart</button>
                     </div>
-                    <div class="container">
-                    <form action="https://formsubmit.co/sweetindiafamilyresturant@gmail.com" method="POST">
-  <!-- Name -->
-  <input type="text" name="name" placeholder="Your Name" required>
-
-  <!-- Email -->
-  <input type="email" name="email" placeholder="Your Email" required>
-
-  <!-- Phone Number -->
-  <input type="tel" name="phone" placeholder="Your Phone Number" required>
-
-  <!-- Full Address -->
-  <textarea name="address" placeholder="Your Full Address" required></textarea>
-
-  <!-- Pincode -->
-  <input type="text" name="pincode" placeholder="Pincode" required>
-
-  <!-- Order Details -->
-  <textarea name="order" placeholder="Your Order Details" required></textarea>
-
-  <!-- Optional Hidden Fields -->
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://creatixlabhq.github.io/Sweetindiafamilyresturant/index.html">
-
-  <!-- Submit Button -->
-  <button type="submit">Place Order</button>
+                    <form action="http://localhost:3000/submit" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <button type="submit">Send</button>
                     </form>
-
-                </div>
             </div>
         </div>
     </section>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sweet India Restaurant Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f6f6f6}
+
+/* VARIABLES */
+:root{
+  --bg-img:url('https://i.postimg.cc/4ySnFvHg/HD-wallpaper-nature-landscape-landscape-nature-thumbnail.jpg');
+  --dark:#0b132b;
+  --red:#e63946;
+}
+
+/* HEADER */
+header{
+background:#fff;
+padding:15px;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:0 2px 10px rgba(0,0,0,.1)
+}
+header h2{color:var(--red)}
+.search{
+margin-top:10px;
+padding:10px;
+width:100%;
+border-radius:8px;
+border:1px solid #ddd
+}
+
+/* MENU */
+.menu{
+padding:15px;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:15px;
+background:var(--bg-img);
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+min-height:100vh;
+}
+.card{
+background:#fff;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15)
+}
+.card img{
+width:100%;
+height:120px;
+object-fit:cover
+}
+.card-body{padding:10px}
+.price{font-weight:bold;margin:5px 0}
+.add-btn,.qty{
+border:1px solid var(--red);
+padding:6px;
+border-radius:6px;
+text-align:center;
+cursor:pointer
+}
+.qty{
+display:flex;
+justify-content:space-between;
+background:var(--red);
+color:#fff
+}
+.qty button{
+background:none;
+border:none;
+color:white;
+font-size:18px;
+cursor:pointer
+}
+
+/* CART BAR */
+.cart-bar{
+position:fixed;
+bottom:-100px;
+left:0;
+width:100%;
+background:#1d3557;
+color:#fff;
+padding:15px;
+display:flex;
+justify-content:space-between;
+transition:.4s;
+z-index:20
+}
+.cart-bar.active{bottom:0}
+
+/* CART PAGE */
+.cart-page{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:var(--bg-img);
+background-size:cover;
+background-position:center;
+transform:translateY(100%);
+transition:.4s;
+padding:15px;
+overflow:auto;
+z-index:99
+}
+.cart-page.open{transform:translateY(0)}
+.cart-page::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(255,255,255,.88);
+z-index:-1
+}
+textarea,input{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:1px solid #ddd;
+margin-bottom:10px
+}
+.place-btn{
+background:var(--red);
+color:white;
+padding:15px;
+border:none;
+width:100%;
+border-radius:10px;
+font-size:16px;
+cursor:pointer
+}
+
+/* FOOTER */
+footer{
+background:linear-gradient(to right,var(--dark),#000);
+color:#fff;
+padding:60px 20px 30px;
+}
+.footer-container{
+max-width:1100px;
+margin:auto;
+}
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+footer h3{margin-bottom:15px}
+footer p,footer li{color:#ddd;font-size:14px}
+
+.social-links a{
+color:#fff;
+font-size:20px;
+margin-right:15px;
+transition:.3s;
+}
+.social-links a:hover{color:#fcbf49}
+
+.contact li,.opening li{
+display:flex;
+justify-content:space-between;
+margin-bottom:8px;
+}
+.contact span:first-child{
+width:30px;
+}
+
+.footer-bottom{
+border-top:1px solid #333;
+margin-top:40px;
+padding-top:20px;
+text-align:center;
+font-size:13px;
+color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>🍴 Sweet India Family Restaurant</h2>
+<input class="search" placeholder="Search food..." onkeyup="searchFood(this.value)">
+</header>
+
+<div class="menu" id="menu"></div>
+
+<div class="cart-bar" id="cartBar" onclick="openCart()">
+<div><span id="cartCount">0</span> Items | ₹<span id="cartTotal">0</span></div>
+<div>Continue →</div>
+</div>
+
+<div class="cart-page" id="cartPage">
+<h3>Your Order</h3>
+<textarea id="orderText" readonly></textarea>
+<input placeholder="Full Name" id="name" required>
+<input placeholder="Phone Number" id="phone" required>
+<textarea id="address" placeholder="Enter delivery address manually"></textarea>
+<button onclick="detectAddress()">📍 Auto Detect Address</button><br><br>
+<button class="place-btn" onclick="placeOrder()">Place Order</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-container">
+<div class="footer-grid">
+
+<div>
+<h3>SWEET INDIA</h3>
+<p><i>A family tradition of authentic Indian cuisine since 1995</i></p>
+<div class="social-links">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="https://instagram.com/sweetindiaofficial" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-yelp"></i></a>
+<a href="https://wa.me/919569321287" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+
+<div>
+<h3>Contact</h3>
+<ul class="contact">
+<li><span>📍</span><span>Near Bata Gali, Gandhinagar</span></li>
+<li><span>📞</span><span>+91 error</span></li>
+<li><span>📧</span><span>Rohitmujnani@gmail.com</span></li>
+</ul>
+</div>
+
+<div>
+<h3>Opening Hours</h3>
+<ul class="opening">
+<li><span>Mon - Thu</span><span>11:00 - 22:00</span></li>
+<li><span>Fri - Sat</span><span>11:00 - 23:00</span></li>
+<li><span>Sunday</span><span>11:00 - 21:00</span></li>
+</ul>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2025 Sweet India Family Restaurant | Designed by Shubham
+</div>
+</div>
+</footer>
+
+<script>
+const items=[
+{id:1,name:"Paneer Butter Masala",price:220,img:"https://source.unsplash.com/400x300/?paneer"},
+{id:2,name:"Veg Biryani",price:180,img:"https://source.unsplash.com/400x300/?biryani"},
+{id:3,name:"Masala Dosa",price:120,img:"https://source.unsplash.com/400x300/?dosa"},
+{id:4,name:"Burger",price:150,img:"https://source.unsplash.com/400x300/?burger"}
+];
+let cart={};
+
+function render(){
+menu.innerHTML="";
+items.forEach(i=>{
+menu.innerHTML+=`
+<div class="card">
+<img src="${i.img}">
+<div class="card-body">
+<h4>${i.name}</h4>
+<div class="price">₹${i.price}</div>
+${cart[i.id]?
+`<div class="qty">
+<button onclick="dec(${i.id})">-</button>
+<span>${cart[i.id]}</span>
+<button onclick="inc(${i.id})">+</button>
+</div>`:
+`<div class="add-btn" onclick="add(${i.id})">ADD</div>`}
+</div></div>`;
+});
+updateCart();
+}
+function add(id){cart[id]=1;render();}
+function inc(id){cart[id]++;render();}
+function dec(id){cart[id]--;if(cart[id]<=0)delete cart[id];render();}
+function updateCart(){
+let c=0,t=0,text="";
+for(let id in cart){
+let it=items.find(i=>i.id==id);
+c+=cart[id]; t+=it.price*cart[id];
+text+=`${it.name} x ${cart[id]}\n`;
+}
+cartBar.classList.toggle("active",c>0);
+cartCount.innerText=c;
+cartTotal.innerText=t;
+orderText.value=text+`\nTotal: ₹${t}`;
+}
+function openCart(){cartPage.classList.add("open");}
+function placeOrder(){
+fetch("https://yash-wine.vercel.app/api/ssg66@gmail.com",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({
+Name:name.value,
+Phone:phone.value,
+Address:address.value,
+Order:orderText.value
+})
+}).then(()=>alert("✅ Order Sent"));
+}
+function searchFood(q){
+render();
+document.querySelectorAll(".card").forEach(c=>{
+if(!c.innerText.toLowerCase().includes(q.toLowerCase()))
+c.style.display="none";
+});
+}
+function detectAddress(){
+navigator.geolocation.getCurrentPosition(async pos=>{
+const r=await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`);
+const d=await r.json();
+address.value=d.display_name||"Not detected";
+});
+}
+render();
+</script>
+
+</body>
+  </html>
